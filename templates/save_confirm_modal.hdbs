@@ -1,0 +1,15 @@
+<div id="save-confirm-modal" class="modal hide fade" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close fail-ticket" data-dismiss="modal"
+      aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Ticket Merger</h3>
+  </div>
+  <div class="modal-body">
+    <p>There are unmerged tickets from this user. Proceed without merging?</p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn fail-ticket" data-dismiss="modal" aria-hidden="true">No</button>
+    <button class="btn btn-primary save-ticket" data-dismiss="modal">Yes</button>
+  </div>
+</div>

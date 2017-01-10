@@ -1,0 +1,178 @@
+.header {
+	display: block;
+	padding-bottom: 10px;
+  height: 28px;
+}
+
+.select-controls {
+	display: inline-block;
+	width: 100px;
+	vertical-align: bottom;
+  padding-top: 10px;
+	text-align: left;
+}
+
+.merge-multi {
+  max-width: 195px;
+	display: none; /* hidden until checkboxes are selected */
+	float:right;
+}
+
+.ticket-item {
+	border-top: 2px solid #cdcdcd;
+	padding-bottom: 5px;
+	padding-top: 10px;
+}
+
+.ticket-item .left-column {
+	display: inline-block;
+	width: 25px;
+}
+
+.status {
+	display: inline-block;
+	color: white;
+	font-size: 17px;
+	line-height: 25px;
+	height: 25px;
+	width: 25px;
+	opacity: 0.6;
+	text-align: center;
+	vertical-align: top;
+	text-transform: uppercase;
+}
+
+.status-new {
+  background: #f5ca00;
+}
+
+.status-open {
+  background: #e82a2a;
+}
+
+.status-pending {
+  background: #59bbe0;
+}
+
+.status-solved {
+  background: #828282;
+}
+
+.status-hold {
+  background: #555;
+}
+
+.status-closed {
+  background: #ABABAB;
+}
+
+.merge-checkbox-container {
+	text-align: center;
+}
+
+.ticket-details {
+	display: inline-block;
+  width: 276px;
+  padding-left: 9px;
+}
+
+.ticket-subject, .ticket-created-at, .comment-controls {
+	display: inline-block;
+	margin-bottom: 5px;
+}
+
+.ticket-subject {
+	width: 100%;
+}
+
+.ticket-created-at {
+	width: 218px;
+}
+
+.comment {
+	position: relative;
+}
+
+.comment-author {
+	display: inline-block;
+	font-weight: 600;
+	font-size: 16px;
+}
+
+.comment-created-at {
+	display: inline-block;
+	position: absolute;
+	right: 0;
+}
+
+.comment-body {
+  line-height: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  padding: 5px;
+	margin-top: 5px;
+  margin-bottom: 10px;
+  word-wrap: break-word;
+}
+
+.comment-body:not(.public) {
+	background-color: #FFF6D9;
+	border: 1px solid #EFDAA3;
+}
+
+.merge-controls {
+	text-align: center;
+}
+
+.btn {
+  border: none;
+}
+
+.merge-in, .merge-out, .merge-multi {
+	color: white;
+}
+
+.merge-in:hover, .merge-out:hover, .merge-multi:hover {
+	box-shadow: none;
+}
+
+.merge-in, .merge-out {
+	margin-bottom: 5px;
+}
+
+.merge-in {
+	background-color: #65AE28;
+}
+
+.merge-in:hover {
+	background-color: #599724;
+}
+
+.merge-out {
+	background-color: #33CCFF;
+}
+
+.merge-out:hover {
+	background-color: #2cadd9;
+}
+
+.merge-multi {
+  background-color: #e82a2a;
+}
+
+.merge-multi:hover {
+ background-color: #bd2222;
+}
+
+.comments {
+  display: none;
+}
+
+.icon-loading-spinner {
+	display: inline-block;
+}
+
+.comments.comments-expanded {
+	display: block;
+}

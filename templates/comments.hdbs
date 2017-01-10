@@ -1,0 +1,9 @@
+{{#each comments}}
+  <div class='comment'>
+    <div class='comment-author' data-author-id={{this.author_id}}>
+      <i class='icon-loading-spinner'></i>
+    </div>
+    <div class='comment-created-at'>{{this.pretty_created_at}}</div>
+    <div class='comment-body {{#if this.public}}public{{/if}}'>{{this.plain_body}}</div>
+  </div>
+{{/each}}
