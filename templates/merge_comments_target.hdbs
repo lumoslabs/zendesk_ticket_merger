@@ -1,0 +1,4 @@
+{{#each source_tickets}}
+  Request #{{this.ticket_id}} was closed and merged into this request.
+
+{{/each}}

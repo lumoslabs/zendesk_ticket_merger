@@ -1,0 +1,35 @@
+<div class='ticket-list'>
+	{{#each tickets}}
+		<div class='ticket-item' data-ticket-id='{{this.id}}'>
+			<div class='left-column'>
+				<div class="status {{this.status_class}}">{{this.short_status}}</div>
+				<div class='merge-checkbox-container'>
+					<input type='checkbox' title='{{this.merge_in_tooltip}}'
+						class='merge-checkbox' data-ticket-id={{this.id}} {{this.merge_in_disabled}}>
+				</div>
+			</div>
+			<div class='ticket-details'>
+				<div class='ticket-subject'>
+					<a href='/agent/tickets/{{this.id}}'>{{this.subject}}</a>
+				</div>
+				<div class='ticket-created-at'>{{this.pretty_created_at}}</div>
+				<div class='comment-controls'>
+					<a class='load-comments' data-ticket-id={{this.id}}>Expand</a>
+				</div>
+			</div>
+			<div class='comments' data-ticket-id='{{this.id}}'>
+				<i class='icon-loading-spinner'></i>
+			</div>
+			<div class='merge-controls'>
+				<button class='btn btn-success merge-in' data-ticket-id={{this.id}}
+					title='{{this.merge_in_tooltip}}' {{this.merge_in_disabled}}>
+					Merge #{{this.id}} into current ticket
+				</button>
+				<button class='btn btn-success merge-out' data-ticket-id={{this.id}}
+					title='{{this.merge_out_tooltip}}' {{this.merge_out_disabled}}>
+					Merge current ticket into #{{this.id}}
+				</button>
+			</div>
+		</div>
+	{{/each}}
+</div>
