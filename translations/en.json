@@ -1,0 +1,8 @@
+{
+  "app": {
+    "description": {
+      "value": "Merge tickets from the sidebar.",
+      "title": "Ticket Merger"
+    }
+  }
+}
