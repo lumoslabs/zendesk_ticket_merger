@@ -57,7 +57,7 @@
     requests: {
       getTicketsByUser: function(user) {
         return {
-          url:  '/api/v2/users/' + user.id() + '/tickets/requested.json',
+          url:  '/api/v2/users/' + user.id() + '/tickets/requested.json?sort_order=desc',
           type: 'GET'
         };
       },
@@ -122,7 +122,6 @@
             this.$('.modal-container').html(this.renderTemplate('multi_merge_modal'));
             this.$('.modal-container').after(this.renderTemplate('save_confirm_modal'));
           }
-
         }).fail(function(){
           this.switchTo('error');
           this.show();
@@ -264,6 +263,7 @@
       this.mergeHandler(tickets)
         .done(function() {
            this.mergeOneSuccess(MERGE_INTO_SUCCESS_NOTIFICATIONS, ticketID);
+           location.reload();
          }).fail(function() {
            $ticketItem.replaceWith(_.sample(FAILURE_NOTIFICATIONS));
          });
@@ -282,6 +282,7 @@
       this.mergeHandler(tickets)
        .done(function() {
          this.mergeOneSuccess(MERGE_OUT_SUCCESS_NOTIFICATIONS, ticketID);
+         location.reload();
          // also hide other merge buttons, since the current ticket is now closed
          this.$('.merge-in').hide();
          this.$('.merge-out').hide();
@@ -321,6 +322,7 @@
       this.mergeHandler(tickets)
         .done(function() {
           $mergeModal.find('.modal-body').html(_.sample(MERGE_SELECTED_SUCCESS_NOTIFICATIONS));
+          location.reload();
           // hide app when user dismisses modal
           $mergeModal.find('.merge-multi-close').addClass('hide-app');
         }).fail(function() {
