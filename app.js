@@ -57,7 +57,7 @@
     requests: {
       getTicketsByUser: function(user) {
         return {
-          url:  '/api/v2/users/' + user.id() + '/tickets/requested.json',
+          url:  '/api/v2/users/' + user.id() + '/tickets/requested.json?sort_order=desc',
           type: 'GET'
         };
       },
@@ -122,7 +122,6 @@
             this.$('.modal-container').html(this.renderTemplate('multi_merge_modal'));
             this.$('.modal-container').after(this.renderTemplate('save_confirm_modal'));
           }
-
         }).fail(function(){
           this.switchTo('error');
           this.show();
@@ -264,6 +263,7 @@
       this.mergeHandler(tickets)
         .done(function() {
            this.mergeOneSuccess(MERGE_INTO_SUCCESS_NOTIFICATIONS, ticketID);
+           this.reloadAfterMerge();
          }).fail(function() {
            $ticketItem.replaceWith(_.sample(FAILURE_NOTIFICATIONS));
          });
@@ -282,6 +282,7 @@
       this.mergeHandler(tickets)
        .done(function() {
          this.mergeOneSuccess(MERGE_OUT_SUCCESS_NOTIFICATIONS, ticketID);
+         this.reloadAfterMerge();
          // also hide other merge buttons, since the current ticket is now closed
          this.$('.merge-in').hide();
          this.$('.merge-out').hide();
@@ -321,11 +322,23 @@
       this.mergeHandler(tickets)
         .done(function() {
           $mergeModal.find('.modal-body').html(_.sample(MERGE_SELECTED_SUCCESS_NOTIFICATIONS));
+          this.reloadAfterMerge();
           // hide app when user dismisses modal
           $mergeModal.find('.merge-multi-close').addClass('hide-app');
         }).fail(function() {
           $mergeModal.find('.modal-body').html('fail');
         });
+    },
+
+    reloadAfterMerge: function() {
+      // Unfortunately, this is now necessary after some changes on Zendesk's side
+      // that will create problems on ticket update if there has been an update made by
+      // another actor (like this app). If something ever changes in that aspect, we should take this off.
+
+      // The timeout is necessary because otherwise it's possible to reload the ticket after the app knows
+      // of the merge success but before the ticket knows of the changes made to it.
+      // TODO: Remove the timeout race condition and replace it by a check on the last comment of the current ticket.
+      setTimeout(function(){ location.reload(); }, 1500);
     },
 
     mergeHandler: function(tickets) {
